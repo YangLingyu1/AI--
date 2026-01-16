@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄时钟</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🍅 番茄时钟</h1>
+            <div class="theme-selector">
+                <button class="theme-btn active" data-theme="default" title="默认主题">🌸</button>
+                <button class="theme-btn" data-theme="ocean" title="海洋主题">🌊</button>
+                <button class="theme-btn" data-theme="forest" title="森林主题">🌲</button>
+                <button class="theme-btn" data-theme="sunset" title="日落主题">🌅</button>
+                <button class="theme-btn" data-theme="night" title="夜间主题">🌙</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="pomodoro">专注</button>
+                <button class="mode-btn" data-mode="shortBreak">短休息</button>
+                <button class="mode-btn" data-mode="longBreak">长休息</button>
+            </div>
+
+            <div class="timer-display">
+                <div class="timer-circle">
+                    <svg class="progress-ring" viewBox="0 0 200 200">
+                        <circle class="progress-ring-bg" cx="100" cy="100" r="90"/>
+                        <circle class="progress-ring-progress" cx="100" cy="100" r="90"/>
+                    </svg>
+                    <div class="timer-text">
+                        <span id="minutes">25</span>
+                        <span class="colon">:</span>
+                        <span id="seconds">00</span>
+                    </div>
+                </div>
+                <div class="timer-label" id="timerLabel">专注时间</div>
+            </div>
+
+            <div class="controls">
+                <button id="startBtn" class="control-btn primary">开始</button>
+                <button id="pauseBtn" class="control-btn secondary">暂停</button>
+                <button id="resetBtn" class="control-btn secondary">重置</button>
+            </div>
+
+            <div class="settings-panel">
+                <button id="settingsToggle" class="settings-toggle">⚙️ 设置</button>
+                <div id="settingsContent" class="settings-content hidden">
+                    <div class="setting-item">
+                        <label for="pomodoroTime">专注时间 (分钟):</label>
+                        <input type="number" id="pomodoroTime" value="25" min="1" max="60">
+                    </div>
+                    <div class="setting-item">
+                        <label for="shortBreakTime">短休息 (分钟):</label>
+                        <input type="number" id="shortBreakTime" value="5" min="1" max="30">
+                    </div>
+                    <div class="setting-item">
+                        <label for="longBreakTime">长休息 (分钟):</label>
+                        <input type="number" id="longBreakTime" value="15" min="1" max="60">
+                    </div>
+                    <button id="saveSettings" class="save-btn">保存设置</button>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h3>今日进度</h3>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">完成的番茄</span>
+                        <span class="stat-value" id="completedPomodoros">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">总专注时间</span>
+                        <span class="stat-value" id="totalFocusTime">0 分钟</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-labels">
+                    <span>目标: 8 个番茄</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>保持专注，高效工作！ 💪</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
